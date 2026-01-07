@@ -472,3 +472,113 @@ If we just want to change the default status code of any specific operations, he
 @app.post("/posts", status_code=status.HTTP_201_CREATED) 
 ```
 
+## Database
+
+- A database is a collection of organized data that can be easily accessed and managed.
+
+- We don't interact or work with databases directly. Instead we make use of software called as Database Management System (DBMS).
+
+![DBMS](/fastapi/assets/dbms.png)
+
+There are mainly two types of databases:
+
+| Relational | NoSQL |
+| :--- | :--- |
+| MySQL | MongoDB |
+| PostgreSQL | DynamoDB |
+| Oracle | Oracle |
+| SQL Server | SQL Server |
+
+---
+
+### Relational Database & SQL
+
+**SQL:**
+
+- Structured Query Language.
+- Language used to communicate with DBMS.
+
+`Postgres`:
+
+- Each instance of postgres can be carved into multiple separate databases.
+
+![Postgres](/fastapi/assets/postgres.png)
+
+- By default every Postgres installation comes with one database already created called `postgres`.
+
+- This is important because Postgres requires you to specify the name of the database to make a connection. So there needs to always be one database.
+
+**Commands to install Postgres on Ubuntu Linux machines:**
+
+```bash
+# Installation Commands
+sudo apt update
+sudo apt install postgresql postgresql-client
+
+# Verify Installation
+# check version
+psql --version
+
+# check service status
+systemctl status postgresql
+
+# connect to postgresql
+sudo -u postgres psql
+
+# alt way to connect to postgresql
+sudo -i -u postgres
+psql
+
+# exit the postgres
+\q
+```
+
+---
+
+### Tables
+
+- A table represents a subject or event in an application.
+
+![Table](/fastapi/assets/table.png)
+
+**Columns vs Rows:**
+
+- A table is made of columns and rows.
+- Each column represents a different attribute.
+- Each row represents a different entry in the table.
+
+![Table](/fastapi/assets/table2.png)
+
+`Postgres DataTypes`:
+
+- Databases have datatypes just like any programming language.
+
+![Data Types](/fastapi/assets/datatypes.png)
+
+**Primary Key:**
+
+- It is a column or group of columns that uniquely identifies each row in a table.
+- Each table can have one and only one primary key.
+
+![Primary Key](/fastapi/assets/primary_key.png)
+
+- The primary key doesn't have to be the `ID` column always. It's up to you to decide which column uniquely defines each record.
+
+- In this example, since an email can only be registered once, the email column can also be used as the primary key.
+
+![Primary Key](/fastapi/assets/primary_key2.png)
+
+**Unique Constraints:**
+
+- A UNIQUE constraint can be applied to any column to make sure every record has a unique value for that column.
+
+![Unique](/fastapi/assets/unique.png)
+
+**Null Constraints:**
+
+- By default, when adding a new entry to a database, any column can be left blank. When a column is left blank, it has a null value.
+
+- If you need column to be properly filled in to create a new record, a NOT NULL constraint can be added to the column to ensure that the column is never left blank.
+
+![Null](/fastapi/assets/null.png)
+
